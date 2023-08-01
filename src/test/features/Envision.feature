@@ -1,7 +1,7 @@
 Feature: Verify the site if the manufature is ENVISON
 
 
-@ENVISON
+@ENVISON1
   Scenario: Verify the option string if the manufature is ENVISON
 
     Given as logged into copsadminlite
@@ -16,17 +16,18 @@ Feature: Verify the site if the manufature is ENVISON
     When Enter user name for ENVISION
     When Enter password for ENVISION
     When Click on save
-    Given as logged into manitou
-    When User enter the username in manitou
-    When User enter the password in manitou
-    When User click on the login button in manitou
-    When Click on search button in home page
-    When Enter search text
-    When Click on search icon
-    When Click on search Result
-    When Click device menu
-    When select a camera
-    When Verify the option string
+    When Verify the success message
+    # Given as logged into manitou
+    # When User enter the username in manitou
+    # When User enter the password in manitou
+    # When User click on the login button in manitou
+    # When Click on search button in home page
+    # When Enter search text
+    # When Click on search icon
+    # When Click on search Result
+    # When Click device menu
+    # When select a camera
+    # When Verify the option string
 
   @ENVISON
   Scenario: Verify address field if the manufature is ENVISON

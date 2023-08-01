@@ -39,6 +39,9 @@ When('User click on the login button in copsadminlite', async function () {
 When('select company from the drop downlist', async function () {
     await copsadminlite.selectWestecFromCompanyddl()
     await copsadminlite.clickonAdministration()
+
+});
+When('Click on sites links', async function () {
     await copsadminlite.clickOnSite()
 });
 
@@ -65,21 +68,9 @@ When('Enter password for ENVISION', async function () {
 When('Click on save', async function () {
     await copsadminlite.ClickOnSaveChanges()
 });
+When('Verify the success message', async function () {
+    await copsadminlite.verifySuccessMessage()
+
+});
 
 
-
-
-// When('Verify new contact is created in BoldNet', async function () {
-//     const IsVisible = await boldNetPage.VerifynewContact()
-//     console.log("IsVisible",IsVisible)
-//      if (IsVisible !== null)
-//      {
-//         console.log("Contact is created");
-//     } else {
-//       throw new Error("No record created");
-//     }
-//     await fixture.page.waitForLoadState();
-//     fixture.logger.info("Waiting for 5 seconds")
-//     await fixture.page.waitForTimeout(5000);
-     
-// });

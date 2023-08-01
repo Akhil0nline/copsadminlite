@@ -21,8 +21,8 @@ export default class copsadminlitePage {
         envisionusername: "//td[@id='valusername']//input[1]",
         envisionpassword: "//td[@id='valpassword']//input[1]",
         manufatureddl: "//select[@id='manufacturer']",
-        saveDetailsButton: "//input[@id='devicedetailsformsubmit']"
-
+        saveDetailsButton: "//input[@id='devicedetailsformsubmit']",
+        ivrDeviceddl: "//select[@id='ivrDeviceType']"
 
     }
     async navigateToLoginPage() {
@@ -67,6 +67,7 @@ export default class copsadminlitePage {
     async selectEnvisionFromManufature() {
 
         await this.page.locator(this.Elements.manufatureddl).selectOption("ENVYSION");
+        await this.page.locator(this.Elements.ivrDeviceddl).selectOption("Envysion Cloud DVR");
     }
 
     async enterUserNameforENVYSION() {
@@ -85,6 +86,20 @@ export default class copsadminlitePage {
     }
     async ClickOnSaveChanges() {
         await this.base.waitAndClick(this.Elements.saveDetailsButton);
+
+    }
+    async verifySuccessMessage() {
+        this.page.once('dialog', dialog => {
+            const originalMessage = dialog.message();
+            dialog.accept().catch(() => { });
+
+            const alertMessage = 'Updated to CopsAdmin Lite Successfully';
+            if (originalMessage === alertMessage) {
+                console.log("site details are updated");
+            } else {
+                throw new Error("No records updated");
+            }
+        });
 
     }
 }
