@@ -52,32 +52,39 @@ export default class copsadminlitePage {
     async clickOnSite() {
         await this.base.waitAndClick(this.Elements.sitesLink);
 
-}
+    }
 
-async clickOnAutomationSite() {
-    await this.base.waitAndClick(this.Elements.automationSite);
+    async clickOnAutomationSite() {
+        await this.base.waitAndClick(this.Elements.automationSite);
 
-}
+    }
 
-async clickOnENVISIONDevice() {
-    await this.base.waitAndClick(this.Elements.envisionDevice);
+    async clickOnENVISIONDevice() {
+        await this.base.waitAndClick(this.Elements.envisionDevice);
 
-}
+    }
 
-async selectEnvisionFromManufature () {
+    async selectEnvisionFromManufature() {
 
-    await this.page.locator(this.Elements.manufatureddl).selectOption("ENVYSION");
-}
+        await this.page.locator(this.Elements.manufatureddl).selectOption("ENVYSION");
+    }
 
-async enterUserNameforENVYSION() {
-    await this.page.locator(this.Elements.envisionusername).clear()
-    await this.page.locator(this.Elements.envisionusername).fill("iss.oe@interfacesys.com")
-    await this.page.locator(this.Elements.envisionpassword).clear()
-    await this.page.locator(this.Elements.envisionpassword).fill("interface.123")
+    async enterUserNameforENVYSION() {
+        await this.page.locator(this.Elements.envisionusername).clear()
+        await this.page.locator(this.Elements.envisionusername).fill("iss.oe@interfacesys.com")
+        await this.page.locator(this.Elements.envisionpassword).clear()
+        await this.page.locator(this.Elements.envisionpassword).fill("interface.123")
 
-}
-async ClickOnSaveChanges() {
-    await this.base.waitAndClick(this.Elements.saveDetailsButton);
 
-}
+    }
+
+    async enterPasswordforENVYSION() {
+
+        await this.page.locator(this.Elements.envisionpassword).clear()
+        await this.page.locator(this.Elements.envisionpassword).fill("interface.123")
+    }
+    async ClickOnSaveChanges() {
+        await this.base.waitAndClick(this.Elements.saveDetailsButton);
+
+    }
 }

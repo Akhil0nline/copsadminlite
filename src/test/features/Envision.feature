@@ -1,60 +1,56 @@
-Feature: Verify if the contact update feature functions correctly when the APM checkbox is enabled.
+Feature: Verify the site if the manufature is ENVISON
 
-  @APMEnabled
-  Scenario: Delete one contact from BoldNet
-    When User navigates to the BoldNet application
-    When User enter the username in BoldNet
-    When User enter the password in BoldNet
-    When User click on the login button in BoldNet
+
+@ENVISON
+  Scenario: Verify the option string if the manufature is ENVISON
+
+    Given as logged into copsadminlite
+    When User enter the username in copsadminlite
+    When User enter the password in copsadminlite
+    When User click on the login button in copsadminlite
+    When select company from the drop downlist
+    When Click on sites links
+    When Select a ENVISION test site
+    When click on the device
+    When Select the manufature as ENVISION
+    When Enter user name for ENVISION
+    When Enter password for ENVISION
+    When Click on save
+    Given as logged into manitou
+    When User enter the username in manitou
+    When User enter the password in manitou
+    When User click on the login button in manitou
     When Click on search button in home page
     When Enter search text
     When Click on search icon
     When Click on search Result
-    When Click on contact menu
-    When Delete an account containing the text Code To Assign 041
+    When Click device menu
+    When select a camera
+    When Verify the option string
 
-  @APMEnabled
-  Scenario: Enable APM checkbox in oracle
-    When User navigates to the oracle application
-    When User enter the username 
-    When User enter the password
-    When User click on the login button
-    When Search Interface security Account Sytems
-    When Click on Profile Tab
-    When Click on APM checkbox
-    When Click on Save
-    
-@APMEnabled1
-  Scenario: Update an account in Security Manager
-    When User navigates to the security application
-    Given User enter the username in security Manager
-    Given User enter the password in security Manager
-    When User click on the login button in security Manager
-    When Click Home link
-    When Click on a test panel 
-    When Create new row and add details or udate existing details
-    When Click on contact button
-    When Verify success message
+  @ENVISON
+  Scenario: Verify address field if the manufature is ENVISON
 
-@APMEnabled
-    Scenario: Verify new contact is created in BoldNet
-    When User navigates to the BoldNet application
-    When User enter the username in BoldNet
-    When User enter the password in BoldNet
-    When User click on the login button in BoldNet
+    Given as logged into copsadminlite
+    When User enter the username in copsadminlite
+    When User enter the password in copsadminlite
+    When User click on the login button in copsadminlite
+    When select company from the drop downlist
+    When Click on sites links
+    When Select a ENVISION test site
+    When click on the device
+    When Verify the manufature is ENVISION
+    When Enter user name for ENVISION
+    When Enter password for ENVISION
+    When Click on save
+    Given as logged into manitou
+    When User enter the username in manitou
+    When User enter the password in manitou
+    When User click on the login button in manitou
     When Click on search button in home page
     When Enter search text
     When Click on search icon
     When Click on search Result
-    When Click on contact menu
-    # When select contact Code To Assign 041
-    When Verify new contact is created in BoldNet
-
- @APMEnabled
-  Scenario: Check case is created in apm
-    When User navigates to the APM application
-    Given User enter the username in apm
-    Given User enter the password in APM
-    When User clicks on the login button in APM
-    When Click on queqe menu
-    When Verify the contact details are inserted
+    When Click device menu
+    When select a camera
+    When Verify the value in address field

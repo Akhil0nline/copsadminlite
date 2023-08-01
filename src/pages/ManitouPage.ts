@@ -5,7 +5,7 @@ const { randomValuePhone } = require('../helper/util/test-data/randomdata');
 const { randomValuePasscode } = require('../helper/util/test-data/randomdata');
 
 
-export default class SecurityManager {
+export default class ManitouPage {
     private base: PlaywrightWrapper
     constructor(private page: Page) {
         this.base = new PlaywrightWrapper(page);
