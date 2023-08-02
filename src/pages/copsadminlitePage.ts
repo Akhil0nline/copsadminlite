@@ -22,7 +22,8 @@ export default class copsadminlitePage {
         envisionpassword: "//td[@id='valpassword']//input[1]",
         manufatureddl: "//select[@id='manufacturer']",
         saveDetailsButton: "//input[@id='devicedetailsformsubmit']",
-        ivrDeviceddl: "//select[@id='ivrDeviceType']"
+        ivrDeviceddl: "//select[@id='ivrDeviceType']",
+        storeNo: "//input[@id='txtStoreNo']"
 
     }
     async navigateToLoginPage() {
@@ -100,6 +101,13 @@ export default class copsadminlitePage {
                 throw new Error("No records updated");
             }
         });
+
+    }
+    async ExtractStoreNo() {
+        const storeNoData = await this.page.locator(this.Elements.storeNo)
+        const storeNoDataText = await storeNoData.innerText()
+        console.log(storeNoDataText)
+        return storeNoDataText
 
     }
 }
