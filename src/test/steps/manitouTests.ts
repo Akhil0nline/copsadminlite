@@ -76,7 +76,7 @@ When('Click on search Result', async function () {
     fixture.logger.info("Waiting for 2 seconds")
  })
 
- When('Verify the option string', async function () {
+ When('Verify the option string In ENVYSION', async function () {
     await Manitou.verifyoptionString()
     await fixture.page.waitForLoadState();
     fixture.logger.info("Waiting for 2 seconds")
@@ -84,6 +84,21 @@ When('Click on search Result', async function () {
 
  When('Verify the value in address field', async function () {
     await Manitou.verifyAddressValue()
+    await fixture.page.waitForLoadState();
+    fixture.logger.info("Waiting for 2 seconds")
+ })
+ When('Click on IPC-CORE menu', async function () {
+    await Manitou.clickOnIPCCoreMENU()
+    await fixture.page.waitForLoadState();
+    fixture.logger.info("Waiting for 2 seconds")
+ })
+ When('Verify the option string in IPC', async function () {
+    await Manitou.verifyoptionStringInIPC()
+    await fixture.page.waitForLoadState();
+    fixture.logger.info("Waiting for 2 seconds")
+ })
+ When('Click device menu under IPC-CORE', async function () {
+    await Manitou.clickOnIPCDevice()
     await fixture.page.waitForLoadState();
     fixture.logger.info("Waiting for 2 seconds")
  })

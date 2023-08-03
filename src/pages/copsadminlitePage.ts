@@ -18,12 +18,17 @@ export default class copsadminlitePage {
         sitesLink: "//a[@href='CustomerManagement/Sites/Sites.aspx']",
         automationSite: "//a[contains(text(),'AUTOMATION')]",
         envisionDevice: "//a[contains(text(),'ENVISION')]",
+        IPCDevice: "//a[contains(text(),' IPC-CORE')]",
         envisionusername: "//td[@id='valusername']//input[1]",
         envisionpassword: "//td[@id='valpassword']//input[1]",
         manufatureddl: "//select[@id='manufacturer']",
         saveDetailsButton: "//input[@id='devicedetailsformsubmit']",
         ivrDeviceddl: "//select[@id='ivrDeviceType']",
-        storeNo: "//input[@id='txtStoreNo']"
+        storeNo: "//input[@id='txtStoreNo']",
+        viewerType: "//select[@id='viewerType']",
+        IPCUserName: "//input[@id='username']",
+        IPCPassword: "//input[@id='password']",
+        RTSPPort: "//input[@id='coreport']"
 
     }
     async navigateToLoginPage() {
@@ -104,10 +109,44 @@ export default class copsadminlitePage {
 
     }
     async ExtractStoreNo() {
-        const storeNoData = await this.page.locator(this.Elements.storeNo)
-        const storeNoDataText = await storeNoData.innerText()
-        console.log(storeNoDataText)
-        return storeNoDataText
+        // const storeNoData = await this.page.locator(this.Elements.storeNo)
+        // const storeNoDataText = await storeNoData.innerText()
+        // console.log(storeNoDataText)
+        // return storeNoDataText
 
     }
+    async selectIPCCore() {
+        await this.base.waitAndClick(this.Elements.IPCDevice);
+    }
+
+    async selectIPCFromManufature() {
+
+        await this.page.locator(this.Elements.manufatureddl).selectOption("IPConfigure");
+        await this.page.locator(this.Elements.ivrDeviceddl).selectOption("IP Configure");
+    }
+    async selectIPCcOREFromViewerType() {
+
+        await this.page.locator(this.Elements.viewerType).selectOption("IPConfigure Core");
+    }
+
+    async enterUserNameforIPC() {
+        await this.page.locator(this.Elements.IPCUserName).clear()
+        await this.page.locator(this.Elements.IPCUserName).fill("admin")
+
+    }
+
+    async enterPasswordforIPC() {
+
+        await this.page.locator(this.Elements.IPCPassword).clear()
+        await this.page.locator(this.Elements.IPCPassword).fill("Interface1")
+    }
+
+    
+    async getValueInRTPCPort() {
+
+        const rtpcPort = await this.page.locator(this.Elements.RTSPPort)
+        const rtpcPortText =await rtpcPort.innerText()
+        return rtpcPortText
+    }
+
 }

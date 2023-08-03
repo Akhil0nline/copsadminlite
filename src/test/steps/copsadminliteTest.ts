@@ -46,11 +46,11 @@ When('Click on sites links', async function () {
 });
 
 
-When('Select a ENVISION test site', async function () {
+When('Select a test site', async function () {
     await copsadminlite.clickOnAutomationSite()
 });
 
-When('click on the device', async function () {
+When('click on the ENVYSION device', async function () {
     await copsadminlite.clickOnENVISIONDevice()
 });
 
@@ -73,4 +73,23 @@ When('Verify the success message', async function () {
 
 });
 
+When('click on the ipc device', async function () {
+    await copsadminlite.selectIPCCore()
 
+});
+When('Select the manufature type as ipc', async function () {
+    await copsadminlite.selectIPCFromManufature()
+
+});
+When('select ipc core from the viewer type list', async function () {
+    await copsadminlite.selectIPCcOREFromViewerType()
+
+});
+When('Enter user name for ipc core', async function () {
+    await copsadminlite.enterUserNameforIPC()
+
+});
+When('Enter password for ipc core', async function () {
+    await copsadminlite.enterPasswordforIPC()
+
+});

@@ -10,8 +10,8 @@ Feature: Verify the site if the manufature is ENVYSION
     When User click on the login button in copsadminlite
     When select company from the drop downlist
     When Click on sites links
-    When Select a ENVISION test site
-    When click on the device
+    When Select a test site
+    When click on the ENVYSION device
     When Select the manufature as ENVISION
     When Enter user name for ENVISION
     When Enter password for ENVISION
@@ -29,16 +29,16 @@ Feature: Verify the site if the manufature is ENVYSION
     When Click on ENVYSION menu
     When Click device menu
     When select a camera
-    When Verify the option string
+    When Verify the option string In ENVYSION
 
-  @ENVISON1
+  @ENVISON
   Scenario: Verify address field if the manufature is ENVYSION
    Given as logged into copsadminlite
     When User enter the username in copsadminlite
     When User enter the password in copsadminlite
     When User click on the login button in copsadminlite
     When select company from the drop downlist
-    When Click on sites links
+    When Click on sites links 
     When Select a ENVISION test site
     When click on the device
     When Select the manufature as ENVISION

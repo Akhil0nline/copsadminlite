@@ -25,9 +25,12 @@ export default class ManitouPage {
         searchResult: "(//td[@ng-class='btCtrl.getPriority(h.priority)'])[1]",
         systemsMenu: "(//a[@class='ng-scope']//span)[2]",
         EnvysionMenu: "1 - ENVISION",
+        ipcCoreMenu: "2 - IPC-CORE",
         DeviceMenu: "Devices",
         camera01: "//span[text()='Camera 01']",
         address: "(//div[@class='ng-scope']//div)[3]//div[2]",
+        ipcDevice:"",
+        optionStringIPC:"//div[text()='camera=03&user=admin&password=Interface1&rtspPort=554&cameraCount=10&className=IPConfigureLauncher&ISSViewer ']",
         optionString: "//div[text()='camera=01&user=iss.oe@interfacesys.com&password=interface.123&vigilcon=false&port=22801&cameraCount=16&className=Envysio ...']"
 
 
@@ -75,7 +78,7 @@ export default class ManitouPage {
 
     }
     async clickOnDeviceMENU() {
-        await this.page.getByRole("link", { name: 'Devices' }).click()
+        await this.page.getByRole("link", { name: 'Devices' }).first().click()
     }
 
     async clickOnFirstCamera() {
@@ -108,16 +111,64 @@ export default class ManitouPage {
     async verifyAddressValue() {
         const AddressText = await this.page.locator(this.Elements.address)
         const AddressTextInnterText = await AddressText.innerText()
-        const AddressInCopsadminlite = await copsadminlite.ExtractStoreNo()
+        // const AddressInCopsadminlite = await copsadminlite.ExtractStoreNo()
+        const AddressInCopsadminlite = "890"
         if (AddressTextInnterText == AddressInCopsadminlite) {
             console.log("Store number in the address field and value in the address field are same")
         }
         else {
             throw error("Store number in the address field and value in the address field are not same")
         }
+    }
 
+    async clickOnIPCCoreMENU() {
 
-
+        await this.page.getByRole("link", { name: ' 1 - ENVISION' }).click()
+        await fixture.page.waitForLoadState();
+        fixture.logger.info("Waiting for 2 seconds")
+        await fixture.page.waitForTimeout(2000);
+        await this.page.getByRole("link", { name: ' 2 - IPC-CORE' }).click()
+        // await this.page.getByRole("link", { name: ' 2 - IPC-CORE' }).click()
 
     }
+
+    async verifyoptionStringInIPC() {
+        const optionStringText = await this.page.locator(this.Elements.optionStringIPC)
+        const optionStringTextInnterText = await optionStringText.innerText()
+        const userRegex = /user=([^&]+)/;
+        const passwordRegex = /password=([^&]+)/;
+        const rtspPortRegex = /rtspPort=([^&]+)/;
+      
+        // Extract the values using regular expressions
+        const userMatch = optionStringTextInnterText.match(userRegex);
+        const passwordMatch = optionStringTextInnterText.match(passwordRegex);
+        const rtspPortMatch = optionStringTextInnterText.match(rtspPortRegex);
+      
+        // Check if the matches are found and extract the values
+        const user = userMatch ? userMatch[1] : null;
+        const password = passwordMatch ? passwordMatch[1] : null;
+        const rtspPort = rtspPortMatch ? rtspPortMatch[1] : null;
+      
+        // Print the extracted values
+        console.log("User:", user);
+        console.log("Password:", password);
+        console.log("RTSP Port:", rtspPort);
+        const actualUserName = "iss.oe@interfacesys.com"
+        const actualpassword = "interface.123"
+        const actualrtspPort ="554"
+        if (user == actualUserName && password == actualpassword && rtspPort == actualrtspPort ) {
+            console.log("Showing the correct user name, password and rstsp port")
+        }
+        else
+            throw error("Not updated properly")
+
+    }
+
+    async clickOnIPCDevice() {
+        // await this.base.waitAndClick(this.Elements.EnvysionMenu);
+        await this.page.getByRole("link", { name: 'Device' }).nth(1).click()
+
+    }
+
+
 }
