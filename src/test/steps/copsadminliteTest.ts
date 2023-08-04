@@ -93,3 +93,18 @@ When('Enter password for ipc core', async function () {
     await copsadminlite.enterPasswordforIPC()
 
 });
+When('click on the ipc Fusion device', async function () {
+    await copsadminlite.selectIPCCoreDevice()
+});
+When('select ipc Fusion from the viewer type list', async function () {
+    await copsadminlite.selectIPCFusionFromViewerType()
+});
+When('Enter user name for ipc Fusion', async function () {
+    await copsadminlite.enterUserNameforIPCFusion()
+});
+When('Enter password for ipc Fusion', async function () {
+    await copsadminlite.enterPasswordforIPCFusion()
+});
+When('Enter Deviceid for ipc Fusion', async function () {
+    await copsadminlite.enterDeviceIDforIPCFusion()
+});

@@ -1,6 +1,6 @@
  Feature: Verify service level update
 
-@IPC
+@service
   Scenario: Verify save when change the service level
 
     Given as logged into copsadminlite
@@ -13,7 +13,7 @@
     When Click on save
     When Verify the confirmation message
 
-@IPC
+@service
   Scenario: Verify ** in area zone 
 
     Given as logged into copsadminlite

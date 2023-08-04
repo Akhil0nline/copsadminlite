@@ -19,6 +19,7 @@ export default class copsadminlitePage {
         automationSite: "//a[contains(text(),'AUTOMATION')]",
         envisionDevice: "//a[contains(text(),'ENVISION')]",
         IPCDevice: "//a[contains(text(),' IPC-CORE')]",
+        IPCDeviceFusion: "//a[contains(text(),' IPC-FUSION')]",
         envisionusername: "//td[@id='valusername']//input[1]",
         envisionpassword: "//td[@id='valpassword']//input[1]",
         manufatureddl: "//select[@id='manufacturer']",
@@ -28,7 +29,10 @@ export default class copsadminlitePage {
         viewerType: "//select[@id='viewerType']",
         IPCUserName: "//input[@id='username']",
         IPCPassword: "//input[@id='password']",
-        RTSPPort: "//input[@id='coreport']"
+        RTSPPort: "//input[@id='coreport']",
+        IPCFusionUserName: "//input[@id='username']",
+        IPCFusionPassword: "//input[@id='password']",
+        IPCFusionDeviceID: "//input[@id='deviceId']",
 
     }
     async navigateToLoginPage() {
@@ -141,12 +145,39 @@ export default class copsadminlitePage {
         await this.page.locator(this.Elements.IPCPassword).fill("Interface1")
     }
 
-    
+
     async getValueInRTPCPort() {
 
         const rtpcPort = await this.page.locator(this.Elements.RTSPPort)
-        const rtpcPortText =await rtpcPort.innerText()
+        const rtpcPortText = await rtpcPort.innerText()
         return rtpcPortText
     }
+    async selectIPCCoreDevice() {
+        await this.base.waitAndClick(this.Elements.IPCDeviceFusion);
+    }
+
+    async selectIPCFusionFromViewerType() {
+
+        await this.page.locator(this.Elements.viewerType).selectOption("IPConfigure Fusion");
+    }
+
+    async enterUserNameforIPCFusion() {
+        await this.page.locator(this.Elements.IPCUserName).clear()
+        await this.page.locator(this.Elements.IPCUserName).fill("admin")
+
+    }
+
+    async enterPasswordforIPCFusion() {
+
+        await this.page.locator(this.Elements.IPCPassword).clear()
+        await this.page.locator(this.Elements.IPCPassword).fill("Interface1!")
+    }
+
+    async enterDeviceIDforIPCFusion() {
+
+        await this.page.locator(this.Elements.IPCFusionDeviceID).clear()
+        await this.page.locator(this.Elements.IPCFusionDeviceID).fill("ef1bb32d-e1f2-4c7b-bf9c-5b3b7ab272bb")
+    }
+
 
 }

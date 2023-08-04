@@ -1,7 +1,7 @@
 Feature: Verify the site if the manufature is OPENEYE
 
 
-@IPC
+@OPENEYE
   Scenario: Verify the option string if the manufature is OPENEYE
 
     Given as logged into copsadminlite
