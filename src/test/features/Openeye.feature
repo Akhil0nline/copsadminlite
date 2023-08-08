@@ -2,7 +2,7 @@ Feature: Verify the site if the manufature is OPENEYE
 
 
 @OPENEYE
-  Scenario: Verify the option string if the manufature is OPENEYE
+ Scenario: Update a OPENEYE device IN Copsadminlite
 
     Given as logged into copsadminlite
     When User enter the username in copsadminlite
@@ -10,14 +10,16 @@ Feature: Verify the site if the manufature is OPENEYE
     When User click on the login button in copsadminlite
     When select company from the drop downlist
     When Click on sites links
-    When Select a ipc CORE test site
-    When click on the device
-    When Verify the manufature is OPENEYE
-    When select ipc core from the viewer type list
-    When Enter user name for OPEN EYE
-    When Enter password for OPEN EYE
-    When Enter Device id for OPEN EYE
+    When Select a test site
+    When click on the OPENEYE device
+    When Select the manufature type as OPENEYE
+    When Enter user name for OPENEYE
+    When Enter password for OPENEYE
+    When Enter Device id for OPENEYE
     When Click on save
+
+    @OPENEYE  
+    Scenario: Verify the option string if the Viewer type is IPC Core
     Given as logged into manitou
     When User enter the username in manitou
     When User enter the password in manitou
@@ -26,7 +28,8 @@ Feature: Verify the site if the manufature is OPENEYE
     When Enter search text
     When Click on search icon
     When Click on search Result
-    When Click device menu
+    When Click on SYSTEM menu
+    When Click on OPENEYE menu
+    When Click device menu under OPENEYE
     When select a camera
-    When Verify the option string
-    When Verify the container created
+    When Verify the option string in OPENEYE
