@@ -31,7 +31,9 @@ export default class ManitouPage {
         camera01: "//span[text()='Camera 01']",
         address: "(//div[@class='ng-scope']//div)[3]//div[2]",
         optionStringIPC: "//div[contains(text(), 'user=admin&password=Interface1')]",
-        optionString: "//div[text()='camera=01&user=iss.oe@interfacesys.com&password=interface.123&vigilcon=false&port=22801&cameraCount=16&className=Envysio ...']"
+        optionString: "//div[text()='camera=01&user=iss.oe@interfacesys.com&password=interface.123&vigilcon=false&port=22801&cameraCount=16&className=Envysio ...']",
+        OPENEYEMenu: "4 - OPENEYE",
+        optionStringOPENEYE:"//div[contains(text(), 'camera=01&user=iss.oe@interfacesys.com')]"
 
 
     }
@@ -223,7 +225,56 @@ export default class ManitouPage {
         } else {
             throw new Error("Not updated properly");
         }
-
-
     }
+
+        async clickOnOPENEYEMenu() {
+
+            await this.page.getByRole("link", { name: ' 1 - ENVISION' }).click()
+            await fixture.page.waitForLoadState();
+            fixture.logger.info("Waiting for 2 seconds")
+            await fixture.page.waitForTimeout(2000);
+            await this.page.getByRole("link", { name: ' 4 - OPENEYE' }).click()
+    
+        }
+    
+        async clickOnOpeneyeDevice() {
+            await this.page.getByRole("link", { name: 'Device' }).nth(3).click()
+    
+        }
+
+        async VerifyOpenEyeOptionString(){
+        const optionStringText = await this.page.locator(this.Elements.optionStringOPENEYE);
+        const optionStringTextInnerText = await optionStringText.innerText();
+        const userRegex = /user=([^&!]+)/;
+        const passwordRegex = /password=([^&]+)/;
+        const deviceRegex = /device=([^&]+)/;
+
+        // Extract the values using regular expressions
+        const userMatch = optionStringTextInnerText.match(userRegex);
+        const passwordMatch = optionStringTextInnerText.match(passwordRegex);
+        const deviceMatch = optionStringTextInnerText.match(deviceRegex);
+
+        // Check if the matches are found and extract the values
+        const user = userMatch ? userMatch[1] : null;
+        const password = passwordMatch ? passwordMatch[1] : null;
+        const device = deviceMatch ? deviceMatch[1] : null;
+
+        // Print the extracted values
+        console.log("User:", user);
+        console.log("Password:", password);
+        console.log("Device:", device);
+
+        // Update actual values with the expected ones
+        const actualUserName = "iss.oe@interfacesys.com";
+        const actualPassword = "interface.123";
+        const actualDevice = "Z6X7RB";
+
+        // Check if the extracted values match the expected ones
+        if (user === actualUserName && password === actualPassword && device === actualDevice) {
+            console.log("Showing the correct user name, password, and device");
+        } else {
+            throw new Error("Not updated properly");
+        }
+        }
+    
 }

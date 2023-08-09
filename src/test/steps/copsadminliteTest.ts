@@ -108,3 +108,25 @@ When('Enter password for ipc Fusion', async function () {
 When('Enter Deviceid for ipc Fusion', async function () {
     await copsadminlite.enterDeviceIDforIPCFusion()
 });
+When('click on the OPENEYE device', async function () {
+    await copsadminlite.selectOPENEYEDevice()
+});
+
+When('Select the manufature type as OPENEYE', async function () {
+    await copsadminlite.selectopeneyeViewerType()
+});
+
+
+When('Enter user name for OPENEYE', async function () {
+    await copsadminlite.enterUserNameforOPENEYE()
+});
+
+
+When('Enter password for OPENEYE', async function () {
+    await copsadminlite.enterPasswordforOPENEYE()
+});
+
+
+When('Enter Device id for OPENEYE', async function () {
+    await copsadminlite.enterDeviceIDforOPENEYE()
+});

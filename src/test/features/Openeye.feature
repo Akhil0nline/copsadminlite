@@ -18,7 +18,7 @@ Feature: Verify the site if the manufature is OPENEYE
     When Enter Device id for OPENEYE
     When Click on save
 
-    @OPENEYE  
+    @OPENEYE
     Scenario: Verify the option string if the Viewer type is IPC Core
     Given as logged into manitou
     When User enter the username in manitou

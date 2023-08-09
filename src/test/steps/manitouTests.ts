@@ -111,3 +111,16 @@ When('Click device menu under IPC-Fusion', async function () {
 When('Verify the option string in IPC FUSION', async function () {
    await Manitou.verifyIPCFusion()
 });
+When('Click on OPENEYE menu', async function () {
+   await Manitou.clickOnOPENEYEMenu()
+});
+
+
+When('Click device menu under OPENEYE', async function () {
+   await Manitou.clickOnOpeneyeDevice()
+});
+
+
+When('Verify the option string in OPENEYE', async function () {
+   await Manitou.VerifyOpenEyeOptionString()
+});

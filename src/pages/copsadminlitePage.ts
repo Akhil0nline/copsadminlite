@@ -33,7 +33,11 @@ export default class copsadminlitePage {
         IPCFusionUserName: "//input[@id='username']",
         IPCFusionPassword: "//input[@id='password']",
         IPCFusionDeviceID: "//input[@id='deviceId']",
-
+        OPENEYEDEVICE:"//a[contains(text(),'OPENEYE')]",
+        OPENEYEUserName: "//input[@id='username']",
+        OPENEYEPassword: "//input[@id='password']",
+        OPENEYEDeviceID: "//input[@id='deviceId']",
+        
     }
     async navigateToLoginPage() {
         await this.base.goto(process.env.BASEURLCOPSADMINLITE);
@@ -177,6 +181,40 @@ export default class copsadminlitePage {
 
         await this.page.locator(this.Elements.IPCFusionDeviceID).clear()
         await this.page.locator(this.Elements.IPCFusionDeviceID).fill("ef1bb32d-e1f2-4c7b-bf9c-5b3b7ab272bb")
+    }
+
+
+
+
+
+    async selectOPENEYEDevice() {
+        await this.base.waitAndClick(this.Elements.OPENEYEDEVICE);
+    }
+
+    async selectopeneyeViewerType() {
+
+        
+        await this.page.locator(this.Elements.manufatureddl).selectOption("OpenEye");
+        await this.page.locator(this.Elements.ivrDeviceddl).selectOption("OpenEye 16");
+        await this.page.locator(this.Elements.viewerType).selectOption("OpenEye");
+    }
+
+    async enterUserNameforOPENEYE() {
+        await this.page.locator(this.Elements.IPCUserName).clear()
+        await this.page.locator(this.Elements.IPCUserName).fill("iss.oe@interfacesys.com")
+
+    }
+
+    async enterPasswordforOPENEYE() {
+
+        await this.page.locator(this.Elements.IPCPassword).clear()
+        await this.page.locator(this.Elements.IPCPassword).fill("interface.123")
+    }
+
+    async enterDeviceIDforOPENEYE() {
+
+        await this.page.locator(this.Elements.IPCFusionDeviceID).clear()
+        await this.page.locator(this.Elements.IPCFusionDeviceID).fill("Z6X7RB")
     }
 
 
