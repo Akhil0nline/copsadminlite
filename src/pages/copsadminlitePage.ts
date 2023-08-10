@@ -33,11 +33,13 @@ export default class copsadminlitePage {
         IPCFusionUserName: "//input[@id='username']",
         IPCFusionPassword: "//input[@id='password']",
         IPCFusionDeviceID: "//input[@id='deviceId']",
-        OPENEYEDEVICE:"//a[contains(text(),'OPENEYE')]",
+        OPENEYEDEVICE: "//a[contains(text(),'OPENEYE')]",
         OPENEYEUserName: "//input[@id='username']",
         OPENEYEPassword: "//input[@id='password']",
         OPENEYEDeviceID: "//input[@id='deviceId']",
-        
+        ServiceLevelDDL: "//select[@id='Servicelevel']",
+        SaveAccountInfo: "//input[@id='BtnSaveServiceLevel']"
+
     }
     async navigateToLoginPage() {
         await this.base.goto(process.env.BASEURLCOPSADMINLITE);
@@ -193,7 +195,7 @@ export default class copsadminlitePage {
 
     async selectopeneyeViewerType() {
 
-        
+
         await this.page.locator(this.Elements.manufatureddl).selectOption("OpenEye");
         await this.page.locator(this.Elements.ivrDeviceddl).selectOption("OpenEye 16");
         await this.page.locator(this.Elements.viewerType).selectOption("OpenEye");
@@ -217,5 +219,27 @@ export default class copsadminlitePage {
         await this.page.locator(this.Elements.IPCFusionDeviceID).fill("Z6X7RB")
     }
 
+    async selectServiceLevel() {
 
+        await this.page.locator(this.Elements.ServiceLevelDDL).selectOption("Interactive Lite");
+    }
+
+    async saveAccountInfo() {
+
+        await this.page.locator(this.Elements.SaveAccountInfo).click()
+    }
+    async verifyServiceLevelMessage() {
+        this.page.once('dialog', dialog => {
+            const originalMessage = dialog.message();
+            dialog.accept().catch(() => { });
+
+            const alertMessage = 'Updated Successfully';
+            if (originalMessage === alertMessage) {
+                console.log("Service Level is updated");
+            } else {
+                throw new Error("No records updated");
+            }
+        });
+
+    }
 }

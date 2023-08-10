@@ -1,6 +1,6 @@
  Feature: Verify service level update
 
-@service
+@service1
   Scenario: Verify save when change the service level
 
     Given as logged into copsadminlite
@@ -9,8 +9,9 @@
     When User click on the login button in copsadminlite
     When select company from the drop downlist
     When Click on sites links
+    When Select a test site
     When Edit service level
-    When Click on save
+    When Click on save account info
     When Verify the confirmation message
 
 @service

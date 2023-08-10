@@ -130,3 +130,15 @@ When('Enter password for OPENEYE', async function () {
 When('Enter Device id for OPENEYE', async function () {
     await copsadminlite.enterDeviceIDforOPENEYE()
 });
+When('Edit service level', async function () {
+
+    await copsadminlite.selectServiceLevel()
+    
+});
+When('Click on save account info', async function () {
+    await copsadminlite.saveAccountInfo()
+});
+
+When('Verify the confirmation message', async function () {
+    await copsadminlite.verifyServiceLevelMessage()
+});
