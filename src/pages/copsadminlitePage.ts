@@ -38,7 +38,10 @@ export default class copsadminlitePage {
         OPENEYEPassword: "//input[@id='password']",
         OPENEYEDeviceID: "//input[@id='deviceId']",
         ServiceLevelDDL: "//select[@id='Servicelevel']",
-        SaveAccountInfo: "//input[@id='BtnSaveServiceLevel']"
+        SaveAccountInfo: "//input[@id='BtnSaveServiceLevel']",
+        sensortab:"//span[text()='Sensors']",
+        camera1Description:"(//tr[@role='row']//input)[2]",
+        saveAllInSensorTab:"(//input[@type='submit'])[2]",
 
     }
     async navigateToLoginPage() {
@@ -242,4 +245,18 @@ export default class copsadminlitePage {
         });
 
     }
+    async clickSensorTab() {
+
+        await this.page.locator(this.Elements.sensortab).click()
+    }
+    async editCamera01() {
+
+        await this.page.locator(this.Elements.camera1Description).clear()
+        await this.page.locator(this.Elements.camera1Description).fill("Front Camera 01")
+    }
+    async saveAllInSensorTab() {
+
+        await this.page.locator(this.Elements.saveAllInSensorTab).click()
+    }
+
 }

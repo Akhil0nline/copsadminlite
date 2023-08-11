@@ -124,3 +124,7 @@ When('Click device menu under OPENEYE', async function () {
 When('Verify the option string in OPENEYE', async function () {
    await Manitou.VerifyOpenEyeOptionString()
 });
+
+When('Verify the camera name', async function () {
+   await Manitou.verifycameraName()
+});

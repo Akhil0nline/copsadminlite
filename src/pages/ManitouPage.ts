@@ -33,7 +33,8 @@ export default class ManitouPage {
         optionStringIPC: "//div[contains(text(), 'user=admin&password=Interface1')]",
         optionString: "//div[text()='camera=01&user=iss.oe@interfacesys.com&password=interface.123&vigilcon=false&port=22801&cameraCount=16&className=Envysio ...']",
         OPENEYEMenu: "4 - OPENEYE",
-        optionStringOPENEYE:"//div[contains(text(), 'camera=01&user=iss.oe@interfacesys.com')]"
+        optionStringOPENEYE: "//div[contains(text(), 'camera=01&user=iss.oe@interfacesys.com')]",
+        firstCamerName: "(//td[@sortable='h.field'])[2]",
 
 
     }
@@ -227,22 +228,22 @@ export default class ManitouPage {
         }
     }
 
-        async clickOnOPENEYEMenu() {
+    async clickOnOPENEYEMenu() {
 
-            await this.page.getByRole("link", { name: ' 1 - ENVISION' }).click()
-            await fixture.page.waitForLoadState();
-            fixture.logger.info("Waiting for 2 seconds")
-            await fixture.page.waitForTimeout(2000);
-            await this.page.getByRole("link", { name: ' 4 - OPENEYE' }).click()
-    
-        }
-    
-        async clickOnOpeneyeDevice() {
-            await this.page.getByRole("link", { name: 'Device' }).nth(3).click()
-    
-        }
+        await this.page.getByRole("link", { name: ' 1 - ENVISION' }).click()
+        await fixture.page.waitForLoadState();
+        fixture.logger.info("Waiting for 2 seconds")
+        await fixture.page.waitForTimeout(2000);
+        await this.page.getByRole("link", { name: ' 4 - OPENEYE' }).click()
 
-        async VerifyOpenEyeOptionString(){
+    }
+
+    async clickOnOpeneyeDevice() {
+        await this.page.getByRole("link", { name: 'Device' }).nth(3).click()
+
+    }
+
+    async VerifyOpenEyeOptionString() {
         const optionStringText = await this.page.locator(this.Elements.optionStringOPENEYE);
         const optionStringTextInnerText = await optionStringText.innerText();
         const userRegex = /user=([^&!]+)/;
@@ -275,6 +276,19 @@ export default class ManitouPage {
         } else {
             throw new Error("Not updated properly");
         }
+    }
+
+    async verifycameraName() {
+        const CameraNameText = await this.page.locator(this.Elements.firstCamerName)
+        const CameraNameInnterText = await CameraNameText.innerText()
+        console.log("Camera Name:", CameraNameInnterText)
+        const OriginalCameraName = "Front Camera 01"
+        if (CameraNameInnterText == OriginalCameraName) {
+            console.log("Updated the camera name")
         }
-    
+        else {
+            throw new Error("Not updated properly");
+        }
+
+    }
 }

@@ -142,3 +142,15 @@ When('Click on save account info', async function () {
 When('Verify the confirmation message', async function () {
     await copsadminlite.verifyServiceLevelMessage()
 });
+
+When('click on sensor tab', async function () {
+    await copsadminlite.clickSensorTab()
+});
+When('Edit camera name', async function () {
+
+    await copsadminlite.editCamera01()
+    
+});
+When('Click on save button in sensor tab', async function () {
+    await copsadminlite.saveAllInSensorTab()
+});

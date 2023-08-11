@@ -11,10 +11,15 @@ Feature: Verify site sync when update from copsadminlite
     When select company from the drop downlist
     When Click on sites links
     When Select a test site
-    When click on the device
+    When click on the OPENEYE device
     When click on sensor tab
     When Edit camera name
-    When User navigates to the manitou application
+    When Click on save button in sensor tab
+
+@copsadminlite
+  Scenario: Verify the sensor name in manitou
+
+    Given as logged into manitou
     When User enter the username in manitou
     When User enter the password in manitou
     When User click on the login button in manitou
@@ -22,8 +27,10 @@ Feature: Verify site sync when update from copsadminlite
     When Enter search text
     When Click on search icon
     When Click on search Result
-    When Click device menu
-    When Verify the sensor name
+    When Click on SYSTEM menu
+    When Click on OPENEYE menu
+    When Click device menu under OPENEYE
+    When Verify the camera name
 
 
 @copsadminlite
@@ -39,6 +46,10 @@ Feature: Verify site sync when update from copsadminlite
     When click on the device
     When click on sensor tab
     When Edit the audio type name
+    When click on save button in the audio tab
+
+   @copsadminlite
+  Scenario: Verify the audio zone  in manitou 
     When User navigates to the manitou application
     When User enter the username in manitou
     When User enter the password in manitou
