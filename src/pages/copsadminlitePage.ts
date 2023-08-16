@@ -39,10 +39,13 @@ export default class copsadminlitePage {
         OPENEYEDeviceID: "//input[@id='deviceId']",
         ServiceLevelDDL: "//select[@id='Servicelevel']",
         SaveAccountInfo: "//input[@id='BtnSaveServiceLevel']",
-        sensortab:"//span[text()='Sensors']",
-        camera1Description:"(//tr[@role='row']//input)[2]",
-        saveAllInSensorTab:"(//input[@type='submit'])[2]",
-
+        sensortab: "//span[text()='Sensors']",
+        camera1Description: "(//tr[@role='row']//input)[2]",
+        saveAllInSensorTab: "(//input[@type='submit'])[2]",
+        audioTab: "//span[text()='Audio']",
+        audiozoneName: "(//input[@class='FormField'])[1]",
+        newAudioZoneButton: "//input[@value='Add New Audio Zone']",
+        saveAllButtonInAudioZone: "//input[@value='Save all']"
     }
     async navigateToLoginPage() {
         await this.base.goto(process.env.BASEURLCOPSADMINLITE);
@@ -258,5 +261,19 @@ export default class copsadminlitePage {
 
         await this.page.locator(this.Elements.saveAllInSensorTab).click()
     }
+    async clickAudioTab() {
 
+        await this.page.locator(this.Elements.audioTab).click()
+    }
+    async EnterAudioName() {
+
+        await this.page.locator(this.Elements.audiozoneName).fill("Audio Zone Test")
+        await this.page.locator(this.Elements.audiozoneName).
+    }
+    async clickOnSaveButtonInAudioZone() {
+
+        await this.page.locator(this.Elements.saveAllButtonInAudioZone).click()
+
+
+    }
 }

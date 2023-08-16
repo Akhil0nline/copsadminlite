@@ -133,7 +133,7 @@ When('Enter Device id for OPENEYE', async function () {
 When('Edit service level', async function () {
 
     await copsadminlite.selectServiceLevel()
-    
+
 });
 When('Click on save account info', async function () {
     await copsadminlite.saveAccountInfo()
@@ -149,8 +149,20 @@ When('click on sensor tab', async function () {
 When('Edit camera name', async function () {
 
     await copsadminlite.editCamera01()
-    
+
 });
 When('Click on save button in sensor tab', async function () {
     await copsadminlite.saveAllInSensorTab()
+});
+When('click on audio tab', async function () {
+    await copsadminlite.clickAudioTab()
+});
+
+
+When('Enter audio zone name', async function () {
+    await copsadminlite.EnterAudioName()
+});
+
+When('click on save all button in the audio tab', async function () {
+    await copsadminlite.
 });
