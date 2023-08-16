@@ -268,7 +268,7 @@ export default class copsadminlitePage {
     async EnterAudioName() {
 
         await this.page.locator(this.Elements.audiozoneName).fill("Audio Zone Test")
-        await this.page.locator(this.Elements.audiozoneName).
+        await this.page.locator(this.Elements.newAudioZoneButton).click()
     }
     async clickOnSaveButtonInAudioZone() {
 

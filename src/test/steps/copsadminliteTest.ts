@@ -164,5 +164,5 @@ When('Enter audio zone name', async function () {
 });
 
 When('click on save all button in the audio tab', async function () {
-    await copsadminlite.
+    await copsadminlite.clickOnSaveButtonInAudioZone()
 });
