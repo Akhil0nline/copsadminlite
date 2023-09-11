@@ -118,6 +118,9 @@ When('Click on OPENEYE menu', async function () {
 
 When('Click device menu under OPENEYE', async function () {
    await Manitou.clickOnOpeneyeDevice()
+   await fixture.page.waitForLoadState();
+   fixture.logger.info("Waiting for 2 seconds")
+   await fixture.page.waitForTimeout(2000);
 });
 
 
@@ -127,4 +130,7 @@ When('Verify the option string in OPENEYE', async function () {
 
 When('Verify the camera name', async function () {
    await Manitou.verifycameraName()
+});
+When('Verify the audio type', async function () {
+   await Manitou.verifyAudioName()
 });

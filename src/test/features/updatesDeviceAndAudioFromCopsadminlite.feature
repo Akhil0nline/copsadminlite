@@ -33,7 +33,7 @@ Feature: Verify site sync when update from copsadminlite
     When Verify the camera name
 
 
-@copsadminlite1
+@copsadminlite
   Scenario: Update audio name in copsadminlite
 
     Given as logged into copsadminlite
@@ -48,9 +48,9 @@ Feature: Verify site sync when update from copsadminlite
     When Enter audio zone name
     When click on save all button in the audio tab
 
-   @copsadminlite
+   @copsadminlite1
   Scenario: Verify the audio zone  in manitou 
-    When User navigates to the manitou application
+    Given as logged into manitou
     When User enter the username in manitou
     When User enter the password in manitou
     When User click on the login button in manitou
@@ -58,7 +58,9 @@ Feature: Verify site sync when update from copsadminlite
     When Enter search text
     When Click on search icon
     When Click on search Result
-    When Click device menu
+    When Click on SYSTEM menu
+    When Click on OPENEYE menu
+    When Click device menu under OPENEYE
     When Verify the audio type
 
 

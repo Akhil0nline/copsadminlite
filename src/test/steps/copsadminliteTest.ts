@@ -161,8 +161,14 @@ When('click on audio tab', async function () {
 
 When('Enter audio zone name', async function () {
     await copsadminlite.EnterAudioName()
+    await fixture.page.waitForLoadState();
+    fixture.logger.info("Waiting for 2 seconds")
+    await fixture.page.waitForTimeout(2000);
 });
 
 When('click on save all button in the audio tab', async function () {
     await copsadminlite.clickOnSaveButtonInAudioZone()
+    await fixture.page.waitForLoadState();
+    fixture.logger.info("Waiting for 2 seconds")
+    await fixture.page.waitForTimeout(2000);
 });

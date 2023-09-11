@@ -44,8 +44,8 @@ export default class copsadminlitePage {
         saveAllInSensorTab: "(//input[@type='submit'])[2]",
         audioTab: "//span[text()='Audio']",
         audiozoneName: "(//input[@class='FormField'])[1]",
-        newAudioZoneButton: "//input[@value='Add New Audio Zone']",
-        saveAllButtonInAudioZone: "//input[@value='Save all']"
+        newAudioZoneButton: "//input[@id='btnSaveAudioZone']",
+        audiozoneDetailSubmit:"//input[@id='audiozoneDetailSubmit']"
     }
     async navigateToLoginPage() {
         await this.base.goto(process.env.BASEURLCOPSADMINLITE);
@@ -268,12 +268,14 @@ export default class copsadminlitePage {
     async EnterAudioName() {
 
         await this.page.locator(this.Elements.audiozoneName).fill("Audio Zone Test")
+        await fixture.page.waitForLoadState();
+        fixture.logger.info("Waiting for 2 seconds")
+        await fixture.page.waitForTimeout(2000);
         await this.page.locator(this.Elements.newAudioZoneButton).click()
     }
     async clickOnSaveButtonInAudioZone() {
 
-        await this.page.locator(this.Elements.saveAllButtonInAudioZone).click()
-
+        await this.page.locator(this.Elements.audiozoneDetailSubmit).click()
 
     }
 }

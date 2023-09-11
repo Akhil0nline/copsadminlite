@@ -35,7 +35,7 @@ export default class ManitouPage {
         OPENEYEMenu: "4 - OPENEYE",
         optionStringOPENEYE: "//div[contains(text(), 'camera=01&user=iss.oe@interfacesys.com')]",
         firstCamerName: "(//td[@sortable='h.field'])[2]",
-
+        firstAudioName: "(//td[@role='button']//span)[2]"
 
     }
     async navigateToLoginPage() {
@@ -285,6 +285,20 @@ export default class ManitouPage {
         const OriginalCameraName = "Front Camera 01"
         if (CameraNameInnterText == OriginalCameraName) {
             console.log("Updated the camera name")
+        }
+        else {
+            throw new Error("Not updated properly");
+        }
+
+    }
+
+    async verifyAudioName() {
+        const AudioNameText = await this.page.locator(this.Elements.firstAudioName)
+        const AudioNameInnterText = await AudioNameText.innerText()
+        console.log("Audio Name:", AudioNameInnterText)
+        const OriginalAudioName = "Audio Zone Test"
+        if (AudioNameInnterText == OriginalAudioName) {
+            console.log("Verified first audio zone name")
         }
         else {
             throw new Error("Not updated properly");
