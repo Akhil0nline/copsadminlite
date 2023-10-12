@@ -13,8 +13,7 @@ export default class copsadminlitePage {
         userName: "//input[@id='tbUserName']",
         password: "//input[@id='tbPassword']",
         loginButton: "//input[@id='btnSubmit']",
-        companyddl: "//li[@class='hd']//select[1]",
-        administrationTab: "//a[contains(text(),'Administration')]",
+        companyddl: "//div[@id='ContentPlaceHolder1_UpdatePanel1']//select[1]",
         sitesLink: "//a[@href='CustomerManagement/Sites/Sites.aspx']",
         automationSite: "//a[contains(text(),'AUTOMATION')]",
         envisionDevice: "//a[contains(text(),'ENVISION')]",
@@ -67,9 +66,9 @@ export default class copsadminlitePage {
         await this.page.locator(this.Elements.companyddl).selectOption("WESTEC INTELLIGENT SURVEILLANCE");
     }
 
-    async clickonAdministration() {
-        await this.base.waitAndClick(this.Elements.administrationTab);
-    }
+    // async clickonAdministration() {
+    //     await this.base.waitAndClick(this.Elements.administrationTab);
+    // }
 
     async clickOnSite() {
         await this.base.waitAndClick(this.Elements.sitesLink);
