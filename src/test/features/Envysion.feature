@@ -31,9 +31,10 @@ Feature: Verify the site if the manufature is ENVYSION
     When select a camera
     When Verify the option string In ENVYSION
 
-  @ENVISON
+  @ENVISON1
   Scenario: Verify address field if the manufature is ENVYSION
-   Given as logged into copsadminlite
+
+    Given as logged into copsadminlite
     When User enter the username in copsadminlite
     When User enter the password in copsadminlite
     When User click on the login button in copsadminlite

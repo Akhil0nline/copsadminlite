@@ -31,7 +31,7 @@ export default class ManitouPage {
         camera01: "//span[text()='Camera 01']",
         address: "(//div[@class='ng-scope']//div)[3]//div[2]",
         optionStringIPC: "//div[contains(text(), 'user=admin&password=Interface1')]",
-        optionString: "//div[text()='camera=01&user=iss.oe@interfacesys.com&password=interface.123&vigilcon=false&port=22801&cameraCount=16&className=Envysio ...']",
+        optionStringENVYSION: "//div[contains(text(),'user=interfacesystems@elpolloloco.com')]",
         OPENEYEMenu: "4 - OPENEYE",
         optionStringOPENEYE: "//div[contains(text(), 'camera=01&user=iss.oe@interfacesys.com')]",
         firstCamerName: "(//td[@sortable='h.field'])[2]",
@@ -88,8 +88,8 @@ export default class ManitouPage {
         await this.base.waitAndClick(this.Elements.camera01);
     }
 
-    async verifyoptionString() {
-        const optionStringText = await this.page.locator(this.Elements.optionString)
+    async verifyoptionStringEnvysion() {
+        const optionStringText = await this.page.locator(this.Elements.optionStringENVYSION)
         const optionStringTextInnterText = await optionStringText.innerText()
         const usernameRegex = /user=([^&]*)/i;
         const passwordRegex = /password=([^&]*)/i;
@@ -102,7 +102,7 @@ export default class ManitouPage {
 
         console.log("Username:", username);
         console.log("Password:", password);
-        const actualUserName = "iss.oe@interfacesys.com"
+        const actualUserName = "interfacesystems@elpolloloco.com"
         const actualpassword = "interface.123"
         if (username == actualUserName && password == actualpassword) {
             console.log("Showing the correct user name and password")
@@ -115,7 +115,7 @@ export default class ManitouPage {
         const AddressText = await this.page.locator(this.Elements.address)
         const AddressTextInnterText = await AddressText.innerText()
         // const AddressInCopsadminlite = await copsadminlite.ExtractStoreNo()
-        const AddressInCopsadminlite = "890"
+        const AddressInCopsadminlite = "789"
         if (AddressTextInnterText == AddressInCopsadminlite) {
             console.log("Store number in the address field and value in the address field are same")
         }

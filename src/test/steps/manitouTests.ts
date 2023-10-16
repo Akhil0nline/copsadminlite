@@ -77,7 +77,7 @@ When('select a camera', async function () {
 })
 
 When('Verify the option string In ENVYSION', async function () {
-   await Manitou.verifyoptionString()
+   await Manitou.verifyoptionStringEnvysion()
    await fixture.page.waitForLoadState();
    fixture.logger.info("Waiting for 2 seconds")
 })

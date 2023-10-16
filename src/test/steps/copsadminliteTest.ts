@@ -36,11 +36,11 @@ When('User click on the login button in copsadminlite', async function () {
     await fixture.page.waitForTimeout(2000);
 });
 
-// When('select company from the drop downlist', async function () {
-//     await copsadminlite.selectWestecFromCompanyddl()
-//     await copsadminlite.clickonAdministration()
+When('select company from the drop downlist', async function () {
+    await copsadminlite.selectWestecFromCompanyddl()
+    await copsadminlite.clickonCompanyddl()
 
-// });
+});
 When('Click on sites links', async function () {
     await copsadminlite.clickOnSite()
 });

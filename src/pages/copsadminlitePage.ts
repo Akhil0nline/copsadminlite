@@ -63,12 +63,12 @@ export default class copsadminlitePage {
     }
 
     async selectWestecFromCompanyddl() {
-        await this.page.locator(this.Elements.companyddl).selectOption("WESTEC INTELLIGENT SURVEILLANCE");
+        await this.page.locator(this.Elements.companyddl).selectOption("TEST2001");
     }
 
-    // async clickonAdministration() {
-    //     await this.base.waitAndClick(this.Elements.administrationTab);
-    // }
+    async clickonCompanyddl() {
+        await this.base.waitAndClick(this.Elements.companyddl);
+    }
 
     async clickOnSite() {
         await this.base.waitAndClick(this.Elements.sitesLink);
@@ -89,11 +89,12 @@ export default class copsadminlitePage {
 
         await this.page.locator(this.Elements.manufatureddl).selectOption("ENVYSION");
         await this.page.locator(this.Elements.ivrDeviceddl).selectOption("Envysion Cloud DVR");
+        await this.page.locator(this.Elements.viewerType).selectOption("Envysion RTSP")
     }
 
     async enterUserNameforENVYSION() {
         await this.page.locator(this.Elements.envisionusername).clear()
-        await this.page.locator(this.Elements.envisionusername).fill("iss.oe@interfacesys.com")
+        await this.page.locator(this.Elements.envisionusername).fill("interfacesystems@elpolloloco.com")
         await this.page.locator(this.Elements.envisionpassword).clear()
         await this.page.locator(this.Elements.envisionpassword).fill("interface.123")
 

@@ -9,7 +9,7 @@ async function sendEmail() {
       secure: false,
       auth: {
         user: 'jeena.manuel@interfacesys.com',
-        pass: 'Interface3',
+        pass: 'Interface4',
       },
     });
 
@@ -21,7 +21,7 @@ async function sendEmail() {
       attachments: [
         {
           filename: 'cucumber-report.html',
-          path: '/SecurityManager/test-results/cucumber-report.html',
+          path: '/copsadminlite/test-results/cucumber-report.html',
         },
       ],
     };
