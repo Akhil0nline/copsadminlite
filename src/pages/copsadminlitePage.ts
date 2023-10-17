@@ -24,7 +24,7 @@ export default class copsadminlitePage {
         manufatureddl: "//select[@id='manufacturer']",
         saveDetailsButton: "//input[@id='devicedetailsformsubmit']",
         ivrDeviceddl: "//select[@id='ivrDeviceType']",
-        storeNo: "//input[@id='txtStoreNo']",
+        storeNo: "//*[@id='txtStoreNo']",
         viewerType: "//select[@id='viewerType']",
         IPCUserName: "//input[@id='username']",
         IPCPassword: "//input[@id='password']",
@@ -44,7 +44,9 @@ export default class copsadminlitePage {
         audioTab: "//span[text()='Audio']",
         audiozoneName: "(//input[@class='FormField'])[1]",
         newAudioZoneButton: "//input[@id='btnSaveAudioZone']",
-        audiozoneDetailSubmit:"//input[@id='audiozoneDetailSubmit']"
+        audiozoneDetailSubmit: "//input[@id='audiozoneDetailSubmit']",
+        IPCCoreAlt:"//a[contains(text(),'IPC-CORE-ALT')]"
+
     }
     async navigateToLoginPage() {
         await this.base.goto(process.env.BASEURLCOPSADMINLITE);
@@ -125,10 +127,10 @@ export default class copsadminlitePage {
 
     }
     async ExtractStoreNo() {
-        // const storeNoData = await this.page.locator(this.Elements.storeNo)
-        // const storeNoDataText = await storeNoData.innerText()
-        // console.log(storeNoDataText)
-        // return storeNoDataText
+        const storeNoData = await this.page.locator(this.Elements.storeNo)
+        const storeNoDataText = await storeNoData.innerText()
+        console.log(storeNoDataText)
+        return storeNoDataText
 
     }
     async selectIPCCore() {
@@ -138,10 +140,10 @@ export default class copsadminlitePage {
     async selectIPCFromManufature() {
 
         await this.page.locator(this.Elements.manufatureddl).selectOption("IPConfigure");
-        await this.page.locator(this.Elements.ivrDeviceddl).selectOption("IP Configure");
+
     }
     async selectIPCcOREFromViewerType() {
-
+        await this.page.locator(this.Elements.ivrDeviceddl).selectOption("IPConfigure Core");
         await this.page.locator(this.Elements.viewerType).selectOption("IPConfigure Core");
     }
 
@@ -171,6 +173,7 @@ export default class copsadminlitePage {
     async selectIPCFusionFromViewerType() {
 
         await this.page.locator(this.Elements.viewerType).selectOption("IPConfigure Fusion");
+        await this.page.locator(this.Elements.ivrDeviceddl).selectOption("IPConfigure Fusion");
     }
 
     async enterUserNameforIPCFusion() {
@@ -191,10 +194,14 @@ export default class copsadminlitePage {
         await this.page.locator(this.Elements.IPCFusionDeviceID).fill("ef1bb32d-e1f2-4c7b-bf9c-5b3b7ab272bb")
     }
 
+    async selectIPCCoreALt() {
+        await this.base.waitAndClick(this.Elements.IPCCoreAlt);
+    }
 
-
-
-
+    async selectIPCcOREALTFromViewerType() {
+        await this.page.locator(this.Elements.ivrDeviceddl).selectOption("IPConfigure Core");
+        await this.page.locator(this.Elements.viewerType).selectOption("IPConfigure Core Alt");
+    }
     async selectOPENEYEDevice() {
         await this.base.waitAndClick(this.Elements.OPENEYEDEVICE);
     }

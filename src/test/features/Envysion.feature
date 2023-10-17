@@ -40,13 +40,8 @@ Feature: Verify the site if the manufature is ENVYSION
     When User click on the login button in copsadminlite
     When select company from the drop downlist
     When Click on sites links 
-    When Select a ENVISION test site
-    When click on the device
-    When Select the manufature as ENVISION
-    When Enter user name for ENVISION
-    When Enter password for ENVISION
-    When Click on save
-    When Verify the success message
+    When Select a test site
+    When Select the store number
     Given as logged into manitou
     Given User enter the username in manitou
     Given User enter the password in manitou

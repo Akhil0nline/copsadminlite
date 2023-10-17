@@ -134,3 +134,15 @@ When('Verify the camera name', async function () {
 When('Verify the audio type', async function () {
    await Manitou.verifyAudioName()
 });
+
+When('Click on IPC-CORE ALT menu', async function () {
+   await Manitou.clickOnIPCCOREALTMenu()
+});
+
+When('Click device menu under IPC-CORE-ALT', async function () {
+   await Manitou.clickOnIPCCOREALTDevice()
+});
+When('Verify the option string in IPC CORE ALT', async function () {
+   await Manitou.VerifyIPCCOREALTOptionString()
+});
+

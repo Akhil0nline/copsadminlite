@@ -72,6 +72,10 @@ When('Verify the success message', async function () {
     await copsadminlite.verifySuccessMessage()
 
 });
+When('Select the store number', async function () {
+    await copsadminlite.ExtractStoreNo()
+    
+});
 
 When('click on the ipc device', async function () {
     await copsadminlite.selectIPCCore()
@@ -81,7 +85,7 @@ When('Select the manufature type as ipc', async function () {
     await copsadminlite.selectIPCFromManufature()
 
 });
-When('select ipc core from the viewer type list', async function () {
+When('select ipc core from the viewer type and IVR device type list', async function () {
     await copsadminlite.selectIPCcOREFromViewerType()
 
 });
@@ -96,7 +100,7 @@ When('Enter password for ipc core', async function () {
 When('click on the ipc Fusion device', async function () {
     await copsadminlite.selectIPCCoreDevice()
 });
-When('select ipc Fusion from the viewer type list', async function () {
+When('select ipc Fusion from the viewer type and ivr device type list', async function () {
     await copsadminlite.selectIPCFusionFromViewerType()
 });
 When('Enter user name for ipc Fusion', async function () {
@@ -171,4 +175,12 @@ When('click on save all button in the audio tab', async function () {
     await fixture.page.waitForLoadState();
     fixture.logger.info("Waiting for 2 seconds")
     await fixture.page.waitForTimeout(2000);
+});
+
+When('click on the ipc CORE ALT device', async function () {
+    await copsadminlite.selectIPCCoreALt()
+});
+
+When('select ipc core ALT from the viewer type and IVR device type list', async function () {
+    await copsadminlite.selectIPCcOREALTFromViewerType()
 });

@@ -35,7 +35,9 @@ export default class ManitouPage {
         OPENEYEMenu: "4 - OPENEYE",
         optionStringOPENEYE: "//div[contains(text(), 'camera=01&user=iss.oe@interfacesys.com')]",
         firstCamerName: "(//td[@sortable='h.field'])[2]",
-        firstAudioName: "(//td[@role='button']//span)[2]"
+        firstAudioName: "(//td[@role='button']//span)[2]",
+        IPCCOREALTMenu: "5 - IPC-CORE-ALT",
+        optionStringIPCcoreALT: "//div[contains(text(), ''//div[text()='camera=01&user=admin&password=Interface1'])]"
 
     }
     async navigateToLoginPage() {
@@ -305,4 +307,54 @@ export default class ManitouPage {
         }
 
     }
+    async clickOnIPCCOREALTMenu() {
+
+        await this.page.getByRole("link", { name: ' 1 - ENVISION' }).click()
+        await fixture.page.waitForLoadState();
+        fixture.logger.info("Waiting for 2 seconds")
+        await fixture.page.waitForTimeout(2000);
+        await this.page.getByRole("link", { name: ' 5 - IPC-CORE-ALT' }).click()
+
+    }
+
+    async clickOnIPCCOREALTDevice() {
+        await this.page.getByRole("link", { name: 'Device' }).nth(5).click()
+
+    }
+    async VerifyIPCCOREALTOptionString() {
+        const optionStringText = await this.page.locator(this.Elements.optionStringIPCcoreALT)
+        const optionStringTextInnterText = await optionStringText.innerText()
+        const userRegex = /user=([^&]+)/;
+        const passwordRegex = /password=([^&]+)/;
+        const rtspPortRegex = /rtspPort=([^&]+)/;
+        const PortRegex = /Port=([^&]+)/;
+
+        // Extract the values using regular expressions
+        const userMatch = optionStringTextInnterText.match(userRegex);
+        const passwordMatch = optionStringTextInnterText.match(passwordRegex);
+        const rtspPortMatch = optionStringTextInnterText.match(rtspPortRegex);
+        const PortMatch = optionStringTextInnterText.match(PortRegex);
+
+        // Check if the matches are found and extract the values
+        const user = userMatch ? userMatch[1] : null;
+        const password = passwordMatch ? passwordMatch[1] : null;
+        const rtspPort = rtspPortMatch ? rtspPortMatch[1] : null;
+        const Port = PortMatch ? PortMatch[1] : null;
+
+        // Print the extracted values
+        console.log("User:", user);
+        console.log("Password:", password);
+        console.log("RTSP Port:", rtspPort);
+        const actualUserName = "admin"
+        const actualpassword = "Interface1"
+        const actualrtspPort = "554"
+        const actualPort = "3000"
+        if (user == actualUserName && password == actualpassword && rtspPort == actualrtspPort && Port == actualPort) {
+            console.log("Showing the correct user name, password and rstsp port")
+        }
+        else
+            throw error("Not updated properly")
+
+    }
 }
+
