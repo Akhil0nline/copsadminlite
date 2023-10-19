@@ -37,7 +37,7 @@ export default class ManitouPage {
         firstCamerName: "(//td[@sortable='h.field'])[2]",
         firstAudioName: "(//td[@role='button']//span)[2]",
         IPCCOREALTMenu: "5 - IPC-CORE-ALT",
-        optionStringIPCcoreALT: "//div[contains(text(), ''//div[text()='camera=01&user=admin&password=Interface1'])]"
+        optionStringIPCcoreALT: "//div[contains(text(), 'camera=01&user=admin&password=Interface1')]"
 
     }
     async navigateToLoginPage() {
@@ -318,22 +318,23 @@ export default class ManitouPage {
     }
 
     async clickOnIPCCOREALTDevice() {
-        await this.page.getByRole("link", { name: 'Device' }).nth(5).click()
+        await this.page.getByRole("link", { name: 'Device' }).nth(4).click()
 
     }
     async VerifyIPCCOREALTOptionString() {
-        const optionStringText = await this.page.locator(this.Elements.optionStringIPCcoreALT)
-        const optionStringTextInnterText = await optionStringText.innerText()
+        const optionStringText = await this.page.locator(this.Elements.optionStringIPCcoreALT);
+        const optionStringTextInnerText = await optionStringText.innerText();
+
         const userRegex = /user=([^&]+)/;
         const passwordRegex = /password=([^&]+)/;
         const rtspPortRegex = /rtspPort=([^&]+)/;
-        const PortRegex = /Port=([^&]+)/;
+        const PortRegex = /port=([^&]+)/;
 
         // Extract the values using regular expressions
-        const userMatch = optionStringTextInnterText.match(userRegex);
-        const passwordMatch = optionStringTextInnterText.match(passwordRegex);
-        const rtspPortMatch = optionStringTextInnterText.match(rtspPortRegex);
-        const PortMatch = optionStringTextInnterText.match(PortRegex);
+        const userMatch = optionStringTextInnerText.match(userRegex);
+        const passwordMatch = optionStringTextInnerText.match(passwordRegex);
+        const rtspPortMatch = optionStringTextInnerText.match(rtspPortRegex);
+        const PortMatch = optionStringTextInnerText.match(PortRegex);
 
         // Check if the matches are found and extract the values
         const user = userMatch ? userMatch[1] : null;
@@ -345,15 +346,18 @@ export default class ManitouPage {
         console.log("User:", user);
         console.log("Password:", password);
         console.log("RTSP Port:", rtspPort);
-        const actualUserName = "admin"
-        const actualpassword = "Interface1"
-        const actualrtspPort = "554"
-        const actualPort = "3000"
-        if (user == actualUserName && password == actualpassword && rtspPort == actualrtspPort && Port == actualPort) {
-            console.log("Showing the correct user name, password and rstsp port")
+        console.log("Port:", Port);
+
+        const actualUserName = "admin";
+        const actualPassword = "Interface1";
+        const actualRtspPort = "554";
+        const actualPort = "3000";
+
+        if (user === actualUserName && password === actualPassword && rtspPort === actualRtspPort && Port === actualPort) {
+            console.log("Showing the correct user name, password, RTSP port, and Port");
+        } else {
+            throw new Error("Not updated properly");
         }
-        else
-            throw error("Not updated properly")
 
     }
 }
