@@ -1,7 +1,7 @@
  Feature: Verify service level update
 
-@service1
-  Scenario: Verify save when change the service level
+@service
+  Scenario: Verify service level update functionality
 
     Given as logged into copsadminlite
     When User enter the username in copsadminlite

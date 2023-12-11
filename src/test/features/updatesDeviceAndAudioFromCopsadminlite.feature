@@ -16,7 +16,7 @@ Feature: Verify site sync when update from copsadminlite
     When Edit camera name
     When Click on save button in sensor tab
 
-@copsadminlite1
+@copsadminlite
   Scenario: Verify the sensor name in manitou
 
     Given as logged into manitou

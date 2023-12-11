@@ -31,5 +31,5 @@ Feature: Verify the site if the manufature is OPENEYE
     When Click on SYSTEM menu
     When Click on OPENEYE menu
     When Click device menu under OPENEYE
-    When select a camera
+    When select the second camera
     When Verify the option string in OPENEYE

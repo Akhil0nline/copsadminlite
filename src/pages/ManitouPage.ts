@@ -33,11 +33,12 @@ export default class ManitouPage {
         optionStringIPC: "//div[contains(text(), 'user=admin&password=Interface1')]",
         optionStringENVYSION: "//div[contains(text(),'user=interfacesystems@elpolloloco.com')]",
         OPENEYEMenu: "4 - OPENEYE",
-        optionStringOPENEYE: "//div[contains(text(), 'camera=01&user=iss.oe@interfacesys.com')]",
-        firstCamerName: "(//td[@sortable='h.field'])[2]",
+        optionStringOPENEYE: "//div[contains(text(), 'camera=02&user=iss.oe@interfacesys.com')]",
+        firstCamerName: "//span[text()='Front Camera 01']",
         firstAudioName: "(//td[@role='button']//span)[2]",
         IPCCOREALTMenu: "5 - IPC-CORE-ALT",
-        optionStringIPCcoreALT: "//div[contains(text(), 'camera=01&user=admin&password=Interface1')]"
+        optionStringIPCcoreALT: "//div[contains(text(), 'camera=01&user=admin&password=Interface1')]",
+        secondCameraName:"//span[text()='Camera 02']",
 
     }
     async navigateToLoginPage() {
@@ -359,6 +360,14 @@ export default class ManitouPage {
             throw new Error("Not updated properly");
         }
 
+    }
+    async updateSensorNameInManitou() {
+        
+
+
+    }
+    async clickOnSecondCamera() {
+        await this.base.waitAndClick(this.Elements.secondCameraName);
     }
 }
 

@@ -145,4 +145,10 @@ When('Click device menu under IPC-CORE-ALT', async function () {
 When('Verify the option string in IPC CORE ALT', async function () {
    await Manitou.VerifyIPCCOREALTOptionString()
 });
+When('update sensor name', async function () {
+   await Manitou.updateSensorNameInManitou()
+});
+When('select the second camera', async function () {
+   await Manitou.clickOnSecondCamera()
+});
 
