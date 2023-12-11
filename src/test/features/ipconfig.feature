@@ -82,7 +82,7 @@ Feature: Verify the site if the manufature is IPCONFIG
     When Enter password for ipc core
     When Click on save
 
-  @IPC1
+  @IPC
   Scenario: Verify the option string if the Viewer type is IPC Core ALT
     Given as logged into manitou
     When User enter the username in manitou
