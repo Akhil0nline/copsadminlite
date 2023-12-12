@@ -18,7 +18,7 @@ Feature: Verify the site if the manufature is ENVYSION
     When Click on save
     When Verify the success message
 
-  @ENVISON
+  @ENVISON1
   Scenario: Verify the option string if the manufature is ENVYSION
 
     Given as logged into manitou

@@ -60,10 +60,11 @@ export default class ManitouPage {
     async clickOnSearchButton() {
         const isOkButtonVisible = await this.page.locator(this.Elements.okButtonInTheHomePopup);
     
-        if (isOkButtonVisible.isVisible) {
-            await this.base.waitAndClick(this.Elements.okButtonInTheHomePopup);
+        if (isOkButtonVisible.isHidden) {
+            
             await this.base.waitAndClick(this.Elements.searchButton);
         } else {
+            await this.base.waitAndClick(this.Elements.okButtonInTheHomePopup);
             await this.base.waitAndClick(this.Elements.searchButton);
         }
     }
