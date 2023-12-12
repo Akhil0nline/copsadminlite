@@ -2,7 +2,7 @@ Feature: Verify the site if the manufature is ENVYSION
 
 
 @ENVISON
-  Scenario: Verify the option string if the manufature is ENVYSION
+  Scenario: Update a site for the manufature Envysion
 
     Given as logged into copsadminlite
     When User enter the username in copsadminlite
@@ -17,6 +17,10 @@ Feature: Verify the site if the manufature is ENVYSION
     When Enter password for ENVISION
     When Click on save
     When Verify the success message
+
+  @ENVISON
+  Scenario: Verify the option string if the manufature is ENVYSION
+
     Given as logged into manitou
     Given User enter the username in manitou
     Given User enter the password in manitou

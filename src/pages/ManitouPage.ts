@@ -39,6 +39,7 @@ export default class ManitouPage {
         IPCCOREALTMenu: "5 - IPC-CORE-ALT",
         optionStringIPCcoreALT: "//div[contains(text(), 'camera=01&user=admin&password=Interface1')]",
         secondCameraName:"//span[text()='Camera 02']",
+        okButtonInTheHomePopup:"//button[contains(@class,'md-primary md-button')]"
 
     }
     async navigateToLoginPage() {
@@ -57,7 +58,14 @@ export default class ManitouPage {
     }
 
     async clickOnSearchButton() {
-        await this.base.waitAndClick(this.Elements.searchButton);
+        const isOkButtonVisible = await this.page.locator(this.Elements.okButtonInTheHomePopup);
+    
+        if (isOkButtonVisible.isVisible) {
+            await this.base.waitAndClick(this.Elements.okButtonInTheHomePopup);
+            await this.base.waitAndClick(this.Elements.searchButton);
+        } else {
+            await this.base.waitAndClick(this.Elements.searchButton);
+        }
     }
 
     async searchSite() {
@@ -70,6 +78,7 @@ export default class ManitouPage {
     }
 
     async clickOnSearchResult() {
+
         await this.base.waitAndClick(this.Elements.searchResult);
 
     }
