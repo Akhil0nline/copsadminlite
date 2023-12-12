@@ -18,7 +18,7 @@ Feature: Verify the site if the manufature is ENVYSION
     When Click on save
     When Verify the success message
 
-  @ENVISON1
+  @ENVISON
   Scenario: Verify the option string if the manufature is ENVYSION
 
     Given as logged into manitou
@@ -35,7 +35,7 @@ Feature: Verify the site if the manufature is ENVYSION
     When select a camera
     When Verify the option string In ENVYSION
 
-  @ENVISON1
+  @ENVISON
   Scenario: Verify address field if the manufature is ENVYSION
 
     Given as logged into copsadminlite
