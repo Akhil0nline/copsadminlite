@@ -38,8 +38,8 @@ export default class ManitouPage {
         firstAudioName: "(//td[@role='button']//span)[2]",
         IPCCOREALTMenu: "5 - IPC-CORE-ALT",
         optionStringIPCcoreALT: "//div[contains(text(), 'camera=01&user=admin&password=Interface1')]",
-        secondCameraName:"//span[text()='Camera 02']",
-        okButtonInTheHomePopup:"//button[contains(@class,'md-primary md-button')]"
+        secondCameraName: "//span[text()='Camera 02']",
+        okButtonInTheHomePopup: "//span[text()='Yes']"
 
     }
     async navigateToLoginPage() {
@@ -58,14 +58,16 @@ export default class ManitouPage {
     }
 
     async clickOnSearchButton() {
+        await fixture.page.waitForTimeout(5000);
         const isOkButtonVisible = await this.page.locator(this.Elements.okButtonInTheHomePopup);
-    
-        if (isOkButtonVisible.isHidden) {
-            
-            await this.base.waitAndClick(this.Elements.searchButton);
+        if (isOkButtonVisible.isVisible) {
+            await fixture.page.waitForTimeout(5000);
+            await this.page.click(this.Elements.okButtonInTheHomePopup);
+            await fixture.page.waitForTimeout(5000);
+            await this.page.click(this.Elements.searchButton);
         } else {
-            await this.base.waitAndClick(this.Elements.okButtonInTheHomePopup);
-            await this.base.waitAndClick(this.Elements.searchButton);
+            await fixture.page.waitForTimeout(5000);
+            await this.page.click(this.Elements.searchButton);
         }
     }
 
@@ -372,7 +374,7 @@ export default class ManitouPage {
 
     }
     async updateSensorNameInManitou() {
-        
+
 
 
     }

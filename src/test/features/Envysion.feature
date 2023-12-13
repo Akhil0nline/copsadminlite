@@ -1,7 +1,7 @@
 Feature: Verify the site if the manufature is ENVYSION
 
 
-@ENVISON
+  @ENVISON
   Scenario: Update a site for the manufature Envysion
 
     Given as logged into copsadminlite
@@ -18,7 +18,7 @@ Feature: Verify the site if the manufature is ENVYSION
     When Click on save
     When Verify the success message
 
-  @ENVISON1
+  @ENVISON
   Scenario: Verify the option string if the manufature is ENVYSION
 
     Given as logged into manitou
@@ -43,7 +43,7 @@ Feature: Verify the site if the manufature is ENVYSION
     When User enter the password in copsadminlite
     When User click on the login button in copsadminlite
     When select company from the drop downlist
-    When Click on sites links 
+    When Click on sites links
     When Select a test site
     When Select the store number
     Given as logged into manitou
